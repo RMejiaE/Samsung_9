@@ -1,0 +1,227 @@
+############################################################################
+# Grupo 6
+############################################################################
+# Programa que verifica en cada espacio que
+# está el robot si hay marcadores para
+# recoger. En caso de existir, recoge todos los
+# marcadores, si llega a un espacio y no hay marcadores,
+# deberá dejar uno y seguir.
+# Al final del recorrido debe girar 180°.
+
+# El ciclo por siempre while(True) es el "Por siempre"
+while(True):
+    # El ciclo de verificación de "Hay marcadores".
+    if(on_beeper()):
+        while(on_beeper()):
+            # Recoger marcador.
+            pick_beeper()
+    # Si no he llegado al borde
+    # Aquí está implícito que no hay marcadores
+    else:
+        if(carries_beepers()):
+            put_beeper()
+    if(front_is_clear()):
+        # Me muevo
+        move()
+    # De lo contrario (si llegué al borde).
+    else:
+        # Giro y termino la ejecución del programa.
+        turn_left()
+        turn_left()
+        turn_off()
+
+# Usando fuciones definidas por usuario.
+
+# Programa que verifica en cada espacio que
+# está el robot si hay marcadores para
+# recoger. En caso de existir, recoge todos los
+# marcadores, si llega a un espacio y no hay marcadores,
+# deberá dejar uno y seguir.
+# Al final del recorrido debe girar 180°.
+
+# Definición de funciones.
+def regresar():
+    repeat(turn_left,2)
+def recoge_o_deja():
+    if(on_beeper()):
+        while(on_beeper()):
+            # Recoger marcador.
+            pick_beeper()
+    # Si no he llegado al borde
+    # Aquí está implícito que no hay marcadores
+    else:
+        if(carries_beepers()):
+            put_beeper()
+def avanzar_o_apagar():
+    if(front_is_clear()):
+        # Me muevo
+        move()
+    # De lo contrario (si llegué al borde).
+    else:
+        # Giro y termino la ejecución del programa.
+        regresar()
+        turn_off()
+# El ciclo por siempre while(True) es el "Por siempre"
+while(True):
+    recoge_o_deja()
+    avanzar_o_apagar()
+
+
+
+############################################################################
+# Grupo 7
+############################################################################
+
+# Programa que recoge marcadores y deja en donde
+# no encuentre.
+
+# Un ciclo de repetición para mover
+# al robot con condición de muro al frente.
+while(front_is_clear()):
+    #while()
+    if(on_beeper()):
+        pick_beeper()
+    elif(carries_beepers()):
+        put_beeper()
+    else: # AQUÍ :D #
+        #if(carries_beepers()):
+            #put_beeper()
+        move()
+while(on_beeper()):
+    pick_beeper()
+# Giros a la izquierda.
+turn_left()
+turn_left()
+# Apagado.
+turn_off()
+
+
+####################################
+# Ejercicio en lenguaje natural.
+
+# Llego a un espacio y mientras existan 
+# marcadores, recogo todos y me muevo.
+# De lo contrario, dejo un marcador y me muevo.
+while(on_beeper()):
+    pick_beeper()
+    #move()
+move()
+if(carries_beepers()):
+    put_beeper()
+    #move()
+move()
+
+while(on_beeper()):
+    pick_beeper()
+    elif(carries_beepers()):
+        put_beeper()
+        move()
+    #move()
+
+#####################################################################################
+# Programa que hace recorrer al robot una línea recta
+# y recoger todos los marcadores que se encuentre.
+# Sí en una casilla no encuentra nada al llegar, deberá
+# dejar un marcador y seguir a la siguiente.
+# Al final, debe girar 180°
+ 
+# Ciclo repetir hasta que
+while(front_is_clear()):
+    if(on_beeper()):
+        while(on_beeper()):
+            pick_beeper()
+    else:
+        if(carries_beepers()):
+            put_beeper()
+    move()
+# Ciclo infinito "por siempre"
+while(True):
+    if(on_beeper()):
+        while(on_beeper()):
+            pick_beeper()
+    else:
+        if(carries_beepers()):
+            put_beeper()
+    turn_left()
+    turn_left()
+    turn_off()
+
+# Programa con funciones definidas por usuario.
+
+# Definición de funciones.
+def voltear():
+    turn_left()
+    turn_left()
+def recoge_o_deja():
+    if(on_beeper()):
+        while(on_beeper()):
+            pick_beeper()
+    else:
+        if(carries_beepers()):
+            put_beeper()
+# Ciclo repetir hasta que
+while(front_is_clear()):
+    recoge_o_deja()
+    move()
+# Ciclo infinito "por siempre"
+while(True):
+    recoge_o_deja()
+    voltear()
+    turn_off()
+
+############################################################################
+# Grupo 9
+############################################################################
+# El robot debe recorrer un trayecto recto y recoger todos
+# los marcadores que se encuentre en el camino.
+# Si llegase a un espacio vacío, deberá dejar un marcador y seguir.
+
+# Moverse hasta (mientras no haya un muro) que encuentre un muro.
+while(front_is_clear()):
+    while(on_beeper()):
+        pick_beeper()
+        if(not on_beeper()):
+            move()
+    # Aquí sería el no hay marcador.
+    if(carries_beepers()):
+        put_beeper()
+        move()
+# Ya está en el final, no se dbe mover pero debe corroborar si
+# hay marcadores para recoger o si no hay para dejar uno.
+while(on_beeper()):
+    pick_beeper()
+    if(not on_beeper()):
+        turn_left()
+        turn_left()
+        turn_off()
+# Aquí sería el no hay marcador.
+if(carries_beepers()):
+    put_beeper()
+
+turn_left()
+turn_left()
+turn_off()
+
+# Código con funciones definidas por usuario.
+
+# El robot debe recorrer un trayecto recto y recoger todos
+# los marcadores que se encuentre en el camino.
+# Si llegase a un espacio vacío, deberá dejar un marcador y seguir.
+# Definición de funciones.
+def voltear():
+    turn_left()
+    turn_left()
+def recoger_o_dejar():
+    if(on_beeper()):
+        while(on_beeper()):
+            pick_beeper()
+    # Aquí sería el no hay marcador.
+    elif(carries_beepers()):
+        put_beeper()
+# Moverse hasta (mientras no haya un muro) que encuentre un muro.
+while(front_is_clear()):
+    recoger_o_dejar()
+    move()
+recoger_o_dejar()
+voltear()
+turn_off()
